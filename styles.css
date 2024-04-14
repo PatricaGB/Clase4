@@ -1,0 +1,61 @@
+
+body {
+    background-color: rgb(181, 218, 248);
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
+  h1 {
+    color: rgb(139, 25, 5);
+    position: absolute;
+    left: 30%;
+    font-size: 30px;
+}
+
+.contenedor1 {
+    position: absolute;
+    top: 8%;
+    left: 40%;
+}
+
+.contenedor2 {
+    position: absolute;
+    top: 70%;
+    left: -30%;
+    input{
+        width: 400px;
+        height: 28px;
+    }
+}
+
+.Enviar1 {
+    font-size: 10px;
+    position:relative;
+    top: 50%;
+    left:50%;
+    }
+
+.contenedor3 {
+    position: absolute;
+    top: 68%;
+    left: 32%;
+
+}
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    empty-cells: show;
+    border: 2px solid rgb(9, 0, 128);
+    }
+
+thead {
+    background: rgb(141, 197, 211);
+}
+th,td {
+    color: rgb(30, 1, 107);
+    height: auto;
+    width: auto;
+    border-bottom: solid;
+    border: 2px solid rgb(9, 0, 128);
+}
+
+

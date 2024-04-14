@@ -1,150 +1,92 @@
-/*
-const frutas=['manzana','pera','uva','sandia','melon'];
-console.log(frutas);
-console.log(frutas.length);
-frutas.push('platano');
-console.log(frutas);
-frutas.pop();
-console.log(frutas);
-frutas.shift();
-console.log(frutas);
-frutas.unshift('platano');
-console.log(frutas);
-frutas.sort();
-console.log(frutas);
-frutas.reverse();
-console.log(frutas);
-frutas.splice(1,2);
-console.log(frutas);
-frutas.splice(1,0,'platano','mango');
-console.log(frutas);
-const frutas2=frutas.toSpliced(1,2);
-console.log(frutas2);
-console.log(frutas);
-frutas.splice(3,0,'maracuya');
-console.log(frutas);
-let elemento=frutas.pop();
-console.log(elemento); 
-let elemento2=frutas.shift();
-console.log(elemento2); 
-let cadena=frutas.toString();
-console.log(cadena); 
-let cadena2=frutas.join(' - ');
-console.log(cadena2);
-let cadena3=frutas.concat(frutas2);
-console.log(cadena3);
+let FormProyectos = document.getElementById("FormProyectos");
+let IngProyectos = document.getElementById("IngresoProyectos");
+FormProyectos.style.display = "none";
+let ToltalAnual=document.getElementById("TotalAño");
 
-
-console.log(cadena3);
-let cadena4=cadena3.slice(4,5);
-console.log(cadena4); 
-
-const Persona={nombre:"Juan",apellido:"Perez",edad:20,fechaNacimiento:"17/11/1996"};
-console.log(Persona);
-console.log(Persona.nombre);
-console.log(Persona.apellido);
-console.log(Persona.edad);
-console.log(Persona.fechaNacimiento);
-Persona.edad=21;
-console.log(Persona);
-Persona.edad=null;
-console.log(Persona);
-
-
-const arreglobidimensional=[[1,2,3],[4,5,6],[7,8,9]];
-let arreglounidimensional=arreglobidimensional.flat();
-console.log(arreglobidimensional);
-console.log(arreglounidimensional);
-*/
-
-//Nodo: elemento de una lista enlazada, se modifica un valor
-class Nodo{
-    constructor(valor){
-        this.valor=valor;
-        this.siguiente=null;
+function validarNombre(){
+    let nombre=document.getElementById("nombre").value;
+    console.log(nombre);
+    let formato=/^[a-zA-Z]{3,}(?:[a-zA-Z]{3,})*$/
+    if(nombre===""){
+        document.getElementById("ErrorNombre").style.display="block";
+        document.getElementById("ErrorNombre").innerHTML="El Campo es Obligatorio";
     }
-}
-let primero=null;
-
-function agregarElemento(valor){
-    let nuevo=new Nodo(valor);
-   nuevo.siguiente=primero;
-   primero=nuevo;
-}
-
-function mostrar(){
-    let actual=primero;
-    while(actual!=null){
-        console.log(actual.valor);
-        actual=actual.siguiente;
-    }
-}
-
-function eliminar(){
-    primero=primero.siguiente;
-}
-
-
-agregarElemento(15);
-agregarElemento(20);
-agregarElemento(25);
-  
-mostrar();
-console.log(primero);
-
-class Nodo{
-    constructor(valor){
-        this.valor=valor;
-        this.siguiente=null;
-    }
-}
-let primero=null;
- 
-
-//Pila: Va dirigida al valor tope
-class Pila{
-    constructor(){
-        this.tope=null;
-    }
-
-    agregarElementoPila(valor){
-        let nuevo=new Nodo(valor);
-        nuevo.siguiente=this.tope;
-        this.tope=nuevo;
-    }
-    imprimir(){
-        let actual=this.tope;
-        while(actual!=null){
-            console.log(actual.valor);
-            actual=actual.siguiente;
+    else{ if(!formato.test(nombre)){
+        document.getElementById("ErrorNombre").style.display="block";
+        document.getElementById("ErrorNombre").innerHTML="Ingrese caracteres válidos (solo letras)";
+        }
+    
+        else{
+            document.getElementById("ErrorNombre").style.display="none";
         }
     }
 }
 
-let pila=new Pila();
-pila.agregarElementoPila(15);
-pila.agregarElementoPila(20);
-pila.agregarElementoPila(25);
-pila.imprimir();
-console.log(pila);
-
-class Cola{
-    constructor(){
-        this.cola=null;
+function validarApellido(){
+    let apellido=document.getElementById("apellido").value;
+    console.log(apellido);
+    let formato=/^[a-zA-Z]{3,}(?:[a-zA-Z]{3,})*$/
+    if(apellido===""){
+        document.getElementById("ErrorApellido").style.display="block";
+        document.getElementById("ErrorApellido").innerHTML="El Campo es Obligatorio";
     }
-    agregarElementoCola(valor){
-        this.cola.push(valor);
-    }
-    EliminarElementoCola(){
-        return this.cola.shift();
-    }
-    imprimir(){
-        console.log(this.cola);
+    else{ if(!formato.test(apellido)){
+        document.getElementById("ErrorApellido").style.display="block";
+        document.getElementById("ErrorApellido").innerHTML="Ingrese caracteres válidos (solo letras)";
+        }
+        else{ 
+        document.getElementById("ErrorApellido").style.display="none";
+        }
     }
 }
-let cola= new Cola();
-cola.agregarElementoCola(15);
-cola.agregarElementoCola(20);
-cola.agregarElementoCola(25);
-cola.imprimir();
-console.log(cola);
+document.getElementById("nombre").addEventListener("blur",validarNombre);
+document.getElementById("apellido").addEventListener("blur",validarApellido);
+
+function Saludo(){
+    const Formulario = document.getElementById("Formulario");
+    let nombre = Formulario.nombre.value;
+    let apellido = Formulario.apellido.value;
+    let boton = document.getElementById("boton");
+    let FormProyectos = document.getElementById("FormProyectos");
+    
+    if(confirm("¿confirmas que eres "+nombre+" "+apellido+"?")){
+        Formulario.innerHTML= ("Hola "+nombre+" "+apellido+", puedes iniciar:");
+        Formulario.style.fontSize="20px";
+        Formulario.style.ftextAlign="center";
+        boton.style.display = "none";
+        FormProyectos.style.display = "";
+        }
+}
+
+var i = 0
+const Lista = [];
+function IngresoProyectos(){
+    i=i+1;
+    const cons=i;
+    const Proyecto=document.getElementById("proyecto").value;
+    const ubicacion=document.getElementById("Ubicacion").value;
+    const valor=document.getElementById("Valor").value;
+    const plazo=document.getElementById("Plazo").value;
+    const fact=parseInt(valor)/parseInt(plazo);
+    let NProyecto = {cons, Proyecto, ubicacion,valor, plazo,fact}
+    Lista.push(NProyecto);
+    console.log(NProyecto); //revision de funcionamiento
+
+    let _tabla='<table>';
+    _tabla=_tabla+"<tr> Historico de Facturacion </tr>"
+    _tabla=_tabla+"<tr>  <th>#</th><th>Proyecto</th> <th>Ubicacion</th> <th>Vr Contrato</th> <th>Plazo Contrato</th> <th>Facturacion Mes</th> </tr>";  
+    Lista.forEach(p => {
+    _tabla=_tabla+"<tr>";
+    _tabla=_tabla+"<td>"+p.cons+"</td>";
+    _tabla=_tabla+"<td>"+p.Proyecto+"</td>";
+    _tabla=_tabla+"<td>"+p.ubicacion+"</td>";
+    _tabla=_tabla+"<td>"+p.valor+"</td>";
+    _tabla=_tabla+"<td>"+p.plazo+"</td>";
+    _tabla=_tabla+"<td>"+p.fact+"</td>";
+    _tabla=_tabla+"</tr>";
+    });
+    _tabla=_tabla+"</table>"
+    document.getElementById("lista").innerHTML=_tabla;
+    
+}
+
